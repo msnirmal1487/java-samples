@@ -28,7 +28,7 @@ public class ScheduledJob {
 	//	https://www.baeldung.com/shedlock-spring
 	// the schedlock table DDL available in resources/schema.sql
 	
-	@Scheduled(cron = "0 */2 22 * * ?")
+	@Scheduled(cron = "0 */2 23 * * ?")
 	@net.javacrumbs.shedlock.spring.annotation.SchedulerLock(name = "ScheduledJob_cronJob", 
 		      lockAtLeastFor = "PT1M", lockAtMostFor = "PT14M")
 	public void cronJob() {

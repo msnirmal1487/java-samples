@@ -18,7 +18,7 @@ public class ScheduledJobByProfile {
 	@Autowired
 	private BookService service;
 	
-	@Scheduled(cron = "0 */1 22 * * ?")
+	@Scheduled(cron = "0 */1 23 * * ?")
 	@Profile("cron_job")
 	public void cronJob() {
 		LOG.info("Running the scheduled job at " + new Date());
