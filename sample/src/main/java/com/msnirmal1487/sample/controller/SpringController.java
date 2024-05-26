@@ -14,16 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.msnirmal1487.sample.demo.Category;
+import com.msnirmal1487.sample.demo.CategoryRepository;
 import com.msnirmal1487.sample.model.Book;
-import com.msnirmal1487.sample.model.primary.Department;
 import com.msnirmal1487.sample.repo.BookRepo;
-import com.msnirmal1487.sample.repo.primary.DepartmentRepository;
+import com.msnirmal1487.sample.sched.Department;
+import com.msnirmal1487.sample.sched.DepartmentRepository;
 import com.msnirmal1487.sample.service.BookService;
 
 @RestController
-public class BookController {
+public class SpringController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(BookController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SpringController.class);
 	
 	@Autowired
     private BookRepo repo; 
@@ -33,6 +35,9 @@ public class BookController {
 	
 	@Autowired
     private DepartmentRepository departmentRepository;
+	
+	@Autowired
+    private CategoryRepository categoryRepository;
   
     @PostMapping("/addBook") 
     public String saveBook(@RequestBody Book book){ 
@@ -42,9 +47,15 @@ public class BookController {
     } 
     
     @GetMapping("/findAllDepts") 
-    public List<Department> geDepartmentss() { 
+    public List<Department> getDepartments() { 
         
         return departmentRepository.findAll(); 
+    } 
+    
+    @GetMapping("/findAllCateg") 
+    public List<Category> getCategories() { 
+        
+        return categoryRepository.findAll(); 
     } 
   
     @GetMapping("/findAllBooks") 
