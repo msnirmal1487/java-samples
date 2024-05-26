@@ -21,6 +21,7 @@ import com.msnirmal1487.sample.repo.BookRepo;
 import com.msnirmal1487.sample.sched.Department;
 import com.msnirmal1487.sample.sched.DepartmentRepository;
 import com.msnirmal1487.sample.service.BookService;
+import com.msnirmal1487.sample.service.JdbcService;
 
 @RestController
 public class SpringController {
@@ -32,6 +33,9 @@ public class SpringController {
 	
 	@Autowired
 	private BookService service;
+	
+	@Autowired
+	private JdbcService jdbcService;
 	
 	@Autowired
     private DepartmentRepository departmentRepository;
@@ -52,10 +56,22 @@ public class SpringController {
         return departmentRepository.findAll(); 
     } 
     
+    @GetMapping("/getDeptIds") 
+    public List<Long> getDepartmentIds() { 
+        
+        return jdbcService.getDepartmentIds(); 
+    } 
+    
     @GetMapping("/findAllCateg") 
     public List<Category> getCategories() { 
         
         return categoryRepository.findAll(); 
+    } 
+    
+    @GetMapping("/getCategIds") 
+    public List<Long> getCategIds() { 
+        
+        return jdbcService.getCategoryIds(); 
     } 
   
     @GetMapping("/findAllBooks") 
