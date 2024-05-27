@@ -20,6 +20,8 @@ import com.msnirmal1487.sample.model.Book;
 import com.msnirmal1487.sample.repo.BookRepo;
 import com.msnirmal1487.sample.sched.Department;
 import com.msnirmal1487.sample.sched.DepartmentRepository;
+import com.msnirmal1487.sample.sched.Store;
+import com.msnirmal1487.sample.sched.StoreRepository;
 import com.msnirmal1487.sample.service.BookService;
 import com.msnirmal1487.sample.service.JdbcService;
 
@@ -41,6 +43,9 @@ public class SpringController {
     private DepartmentRepository departmentRepository;
 	
 	@Autowired
+	private StoreRepository storeRepository;
+	
+	@Autowired
     private CategoryRepository categoryRepository;
   
     @PostMapping("/addBook") 
@@ -48,6 +53,12 @@ public class SpringController {
         repo.save(book); 
         
         return "Added Successfully"; 
+    } 
+    
+    @GetMapping("/findAllStores") 
+    public List<Store> getStores() { 
+        
+        return storeRepository.findAll(); 
     } 
     
     @GetMapping("/findAllDepts") 
